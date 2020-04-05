@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<html>
-<head>
-    <title>Home page</title>
-</head>
+<jsp:include page="header.jsp"/>
 
-<body>
+<div class="container">
+
+</div>
 
 </body>
 </html>
