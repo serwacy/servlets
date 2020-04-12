@@ -40,7 +40,7 @@ public class RegisterController extends HttpServlet {
                 .login(httpServletRequest.getParameter("login"))
                 .name(httpServletRequest.getParameter("name"))
                 .surname(httpServletRequest.getParameter("surname"))
-                .password(httpServletRequest.getParameter("pwd"))
+                .password(httpServletRequest.getParameter("password"))
                 .build();
     }
 }

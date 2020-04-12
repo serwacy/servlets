@@ -15,7 +15,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Otomoto</a>
         </div>
-        <c:if test="${sessionScope.user}">
+        <c:if test="${sessionScope.user!=null}">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#">Page 1</a></li>
@@ -26,10 +26,13 @@
                 <div class="navbar-header">
                     Witaj ${user.name} uzytkowniku !
                 </div>
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/logout">Logout</a>
+                </div>
             </div>
         </c:if>
 
-        <c:if test="${!sessionScope.user}">
+        <c:if test="${sessionScope.user==null}">
             <ul class="nav navbar-nav" style="float: right">
                 <li><a href="/register">Register</a></li>
             </ul>

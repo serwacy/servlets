@@ -29,4 +29,8 @@ public class UserRepository {
         users.add(user);
         return true;
     }
+
+    public Optional<User> getUserByLogin(final String login) {
+        return users.stream().filter(user -> user.getLogin().equals(login)).findFirst();
+    }
 }

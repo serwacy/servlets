@@ -5,6 +5,8 @@ import com.sda.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
+import java.util.Optional;
+
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserService {
     private static UserService userService;
@@ -19,6 +21,22 @@ public class UserService {
 
     public boolean registerUser (final User user) {
         return userRepository.save(user);
-//        return true;
+    }
+
+    public String loginUser (final String login, final String password) {
+        final Optional<User> user = userRepository.getUserByLogin(login);
+        if(user.isPresent()) {
+            if(user.get().getPassword().equals(password)) {
+                return "correctInput";
+            } else {
+                return "wrongPassword";
+            }
+        } else {
+            return "noSuchLogin";
+        }
+    }
+
+    public User getUserByLogin (final String login) {
+        return userRepository.getUserByLogin(login).get();
     }
 }
