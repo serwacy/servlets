@@ -13,18 +13,18 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Otomoto</a>
+            <a class="navbar-brand" href="/home">Otomoto</a>
         </div>
         <c:if test="${sessionScope.user!=null}">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Page 1</a></li>
+<%--                <li class="active"><a href="/home">Home</a></li>--%>
+                <li><a href="/create-ad">Create AD</a></li>
                 <li><a href="#">Page 2</a></li>
                 <li><a href="#">Page 3</a></li>
             </ul>
             <div class="navbar-header" style="float: right">
                 <div class="navbar-header">
-                    Witaj ${user.name} uzytkowniku !
+                    Witaj, ${user.name}!
                 </div>
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/logout">Logout</a>
@@ -34,13 +34,9 @@
 
         <c:if test="${sessionScope.user==null}">
             <ul class="nav navbar-nav" style="float: right">
+                <li><a href="/login">Login</a></li>
                 <li><a href="/register">Register</a></li>
             </ul>
-            <div class="navbar-header" style="float: right">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/login">Login</a>
-                </div>
-            </div>
         </c:if>
 
     </div>

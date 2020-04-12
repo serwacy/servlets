@@ -45,6 +45,7 @@ public class LoginController extends HttpServlet {
                         .forward(httpServletRequest, httpServletResponse);
                 break;
             default:
+                httpServletRequest.setAttribute("content", "home");
                 httpServletRequest.getRequestDispatcher("home.jsp")
                         .forward(httpServletRequest, httpServletResponse);
                 break;

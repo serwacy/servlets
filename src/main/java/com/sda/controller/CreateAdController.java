@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LogoutController", value = "/logout")
-public class LogoutController extends HttpServlet {
+@WebServlet(name = "CreateAdController", value = "/create-ad")
+public class CreateAdController extends HttpServlet {
     @Override
     protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        httpServletRequest.getSession().invalidate();
-        httpServletRequest.setAttribute("content", "home");
-        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("home.jsp");
+        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("create-ad.jsp");
         requestDispatcher.forward(httpServletRequest, httpServletResponse);
     }
 }

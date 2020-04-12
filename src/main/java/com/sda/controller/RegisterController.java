@@ -26,6 +26,7 @@ public class RegisterController extends HttpServlet {
         final User user = createUserFrom(httpServletRequest);
         final boolean created = userService.registerUser(user);
         if(created) {
+            httpServletRequest.setAttribute("content", "register_successful");
             httpServletRequest.getRequestDispatcher("home.jsp")
                     .forward(httpServletRequest, httpServletResponse);
         } else {
