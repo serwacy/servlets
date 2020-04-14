@@ -17,10 +17,10 @@
         </div>
         <c:if test="${sessionScope.user!=null}">
             <ul class="nav navbar-nav">
-<%--                <li class="active"><a href="/home">Home</a></li>--%>
+                    <%--                <li class="active"><a href="/home">Home</a></li>--%>
                 <li><a href="/create-ad">Create AD</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+                <li><a href="/your-ads">Your Ads</a></li>
+                <li><a href="/all-ads">All Ads</a></li>
             </ul>
             <div class="navbar-header" style="float: right">
                 <div class="navbar-header">
