@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Value
 public class Advert {
     private int price;
+    private String currency;
     private Car car;
     private User user;
     private LocalDateTime createdAt;

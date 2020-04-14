@@ -14,7 +14,7 @@
                 Year of production:  ${advert.car.productionYear}
             </p>
             <p>
-                <a href="#" class="btn btn-primary">${advert.price}</a><br />
+                <a href="#" class="btn btn-primary">${advert.price} ${advert.currency}</a><br />
                 <br /><span>Posted by: ${advert.user.name} ${advert.user.surname}</span>
                 <br /><span>Created at: ${advert.createdAt}</span>
             </p>

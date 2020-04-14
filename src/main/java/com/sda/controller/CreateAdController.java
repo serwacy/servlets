@@ -41,6 +41,7 @@ public class CreateAdController extends HttpServlet {
     private Advert createAdvertFrom (final HttpServletRequest httpServletRequest) {
         return Advert.builder()
                 .price(Integer.parseInt(httpServletRequest.getParameter("price")))
+                .currency(httpServletRequest.getParameter("currency"))
                 .car(createCarFrom(httpServletRequest))
                 .user((User) httpServletRequest.getSession().getAttribute("user"))
                 .createdAt(LocalDateTime.now())
