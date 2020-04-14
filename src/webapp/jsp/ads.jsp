@@ -4,7 +4,11 @@
 
 
 <div class="container">
-
+    <c:forEach items="${requestScope.adverts}" var="advert">
+        <div>
+            ${advert.user.name}
+        </div>
+    </c:forEach>
 </div>
 
 </body>

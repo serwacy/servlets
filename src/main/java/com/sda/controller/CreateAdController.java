@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 
 @WebServlet(name = "CreateAdController", value = "/create-ad")
 public class CreateAdController extends HttpServlet {
-    private AdvertService advertService = com.sda.service.AdvertService.aAdvertService();
+    private AdvertService advertService = AdvertService.aAdvertService();
 
     @Override
     protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {

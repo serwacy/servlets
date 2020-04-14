@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AllAdsController", value = "/ads")
+@WebServlet(name = "AllAdsController", value = "/all-ads")
 public class AllAdsController extends HttpServlet {
     private AdvertService advertService = AdvertService.aAdvertService();
 
     @Override
     protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        httpServletRequest.setAttribute("advert-list", advertService.getAllAdverts());
+        httpServletRequest.setAttribute("adverts", advertService.getAllAdverts());
         final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("ads.jsp");
         requestDispatcher.forward(httpServletRequest, httpServletResponse);
     }

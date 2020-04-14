@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "YourAdsController", value = "/ads")
-public class YourAdsController extends HttpServlet {
+@WebServlet(name = "MyAdsController", value = "/my-ads")
+public class MyAdsController extends HttpServlet {
     private AdvertService advertService = AdvertService.aAdvertService();
 
     @Override
     protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
         final User user = (User) httpServletRequest.getSession().getAttribute("user");
-        httpServletRequest.setAttribute("advert-list", advertService.getAdvertsByUser(user));
+        httpServletRequest.setAttribute("adverts", advertService.getAdvertsByUser(user));
         final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("ads.jsp");
         requestDispatcher.forward(httpServletRequest, httpServletResponse);
     }

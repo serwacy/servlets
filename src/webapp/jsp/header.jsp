@@ -19,7 +19,7 @@
             <ul class="nav navbar-nav">
                     <%--                <li class="active"><a href="/home">Home</a></li>--%>
                 <li><a href="/create-ad">Create AD</a></li>
-                <li><a href="/your-ads">Your Ads</a></li>
+                <li><a href="/my-ads">My Ads</a></li>
                 <li><a href="/all-ads">All Ads</a></li>
             </ul>
             <div class="navbar-header" style="float: right">
