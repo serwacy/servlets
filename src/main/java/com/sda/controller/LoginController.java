@@ -1,6 +1,5 @@
 package com.sda.controller;
 
-import com.sda.model.User;
 import com.sda.service.UserService;
 
 import javax.servlet.RequestDispatcher;

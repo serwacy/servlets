@@ -6,7 +6,10 @@
     <c:if test="${requestScope.content=='register_successful'}">
         Register successful.
     </c:if>
-    <c:if test="${requestScope.content=='home' || sessionScope.user!=null}">
+    <c:if test="${requestScope.content=='advert_added'}">
+        Advert added.
+    </c:if>
+    <c:if test="${(requestScope.content=='home' || sessionScope.user!=null) && requestScope.content!='advert_added'}">
         <img src="https://bi.im-g.pl/im/60/c8/17/z24937568Q,Opel-Corsa-2020.jpg" alt="Home"><br />
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Phasellus rhoncus, erat ac rhoncus blandit, metus elit pellentesque lacus, eu varius tortor nibh vel massa.

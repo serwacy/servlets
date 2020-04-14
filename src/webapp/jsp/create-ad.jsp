@@ -4,10 +4,10 @@
 
 
 <div class="container">
-    <c:if test="${not empty requestScope.loginExists}">
-        Login: ${requestScope.loginExists} already exists in system
+    <c:if test="${requestScope.content=='error'}">
+        Something went wrong. Please try again.
     </c:if>
-    <form action="/register" method="post">
+    <form action="/create-ad" method="post">
         <div class="form-group">
             <label for="production-year">Year of production:</label>
             <input type="number" id="production-year" class="form-control" name="production-year"
