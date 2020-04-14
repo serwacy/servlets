@@ -6,7 +6,18 @@
 <div class="container">
     <c:forEach items="${requestScope.adverts}" var="advert">
         <div>
-            ${advert.user.name}
+            <h3>${advert.car.company} ${advert.car.model}</h3>
+            <p>
+                Mileage:  ${advert.car.mileage}
+            </p>
+            <p>
+                Year of production:  ${advert.car.productionYear}
+            </p>
+            <p>
+                <a href="#" class="btn btn-primary">${advert.price}</a><br />
+                <br /><span>Posted by: ${advert.user.name} ${advert.user.surname}</span>
+                <br /><span>Created at: ${advert.createdAt}</span>
+            </p>
         </div>
     </c:forEach>
 </div>
