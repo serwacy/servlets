@@ -4,26 +4,38 @@
 
 
 <div class="container">
-    <c:if test="${not empty requestScope.loginExists}">
-        Login: ${requestScope.loginExists} already exists in system
-    </c:if>
-    <form action="/login" method="post">
-        <div class="form-group">
-            <label for="login">Login:</label>
-            <input type="text" class="form-control" id="login" placeholder="Enter login" name="login">
-            <c:if test="${not empty requestScope.noSuchLogin}">
-                Login: ${requestScope.noSuchLogin} does not exist
-            </c:if>
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
-            <c:if test="${not empty requestScope.wrongPassword}">
-                Wrong password
-            </c:if>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+   <div class="row">
+      <div class="col-sm-4">
+         <form action="/login" method="post">
+            <div class="form-group">
+               <label for="login">Login:</label>
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="login" type="text" class="form-control" name="login" placeholder="Enter login">
+               </div>
+               <c:if test="${not empty requestScope.noSuchLogin}">
+                  <div class="alert alert-danger">
+                     Login: ${requestScope.noSuchLogin} does not exist!
+                  </div>
+               </c:if>
+            </div>
+            <div class="form-group">
+               <label for="password">Password:</label>
+               <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="password" type="password" class="form-control" name="password"
+                         placeholder="Enter password">
+               </div>
+               <c:if test="${not empty requestScope.wrongPassword}">
+                  <div class="alert alert-danger">
+                     Wrong password!
+                  </div>
+               </c:if>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+      </div>
+   </div>
 </div>
 
 </body>

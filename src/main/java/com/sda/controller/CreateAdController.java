@@ -16,44 +16,44 @@ import java.time.LocalDateTime;
 
 @WebServlet(name = "CreateAdController", value = "/create-ad")
 public class CreateAdController extends HttpServlet {
-    private AdvertService advertService = AdvertService.aAdvertService();
+   private AdvertService advertService = AdvertService.aAdvertService();
 
-    @Override
-    protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("create-ad.jsp");
-        requestDispatcher.forward(httpServletRequest, httpServletResponse);
-    }
+   @Override
+   protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
+      final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("create-ad.jsp");
+      requestDispatcher.forward(httpServletRequest, httpServletResponse);
+   }
 
-    @Override
-    protected void doPost(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        final Advert advert = createAdvertFrom(httpServletRequest);
-        if(advertService.addAdvert(advert)){
-            httpServletRequest.setAttribute("content", "advert_added");
-            httpServletRequest.getRequestDispatcher("home.jsp")
-                    .forward(httpServletRequest, httpServletResponse);
-        } else {
-            httpServletRequest.setAttribute("content", "error");
-            httpServletRequest.getRequestDispatcher("create-ad.jsp")
-                    .forward(httpServletRequest, httpServletResponse);
-        }
-    }
+   @Override
+   protected void doPost(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
+      final Advert advert = createAdvertFrom(httpServletRequest);
+      if (advertService.addAdvert(advert)) {
+         httpServletRequest.setAttribute("content", "advert_added");
+         httpServletRequest.getRequestDispatcher("home.jsp")
+                 .forward(httpServletRequest, httpServletResponse);
+      } else {
+         httpServletRequest.setAttribute("content", "error");
+         httpServletRequest.getRequestDispatcher("create-ad.jsp")
+                 .forward(httpServletRequest, httpServletResponse);
+      }
+   }
 
-    private Advert createAdvertFrom (final HttpServletRequest httpServletRequest) {
-        return Advert.builder()
-                .price(Integer.parseInt(httpServletRequest.getParameter("price")))
-                .currency(httpServletRequest.getParameter("currency"))
-                .car(createCarFrom(httpServletRequest))
-                .user((User) httpServletRequest.getSession().getAttribute("user"))
-                .createdAt(LocalDateTime.now())
-                .build();
-    }
+   private Advert createAdvertFrom(final HttpServletRequest httpServletRequest) {
+      return Advert.builder()
+              .price(Integer.parseInt(httpServletRequest.getParameter("price")))
+              .currency(httpServletRequest.getParameter("currency"))
+              .car(createCarFrom(httpServletRequest))
+              .user((User) httpServletRequest.getSession().getAttribute("user"))
+              .createdAt(LocalDateTime.now())
+              .build();
+   }
 
-    private Car createCarFrom (final HttpServletRequest httpServletRequest) {
-        return Car.builder()
-                .productionYear(Integer.parseInt(httpServletRequest.getParameter("production-year")))
-                .company(httpServletRequest.getParameter("company"))
-                .model(httpServletRequest.getParameter("model"))
-                .mileage(Integer.parseInt(httpServletRequest.getParameter("mileage")))
-                .build();
-    }
+   private Car createCarFrom(final HttpServletRequest httpServletRequest) {
+      return Car.builder()
+              .productionYear(Integer.parseInt(httpServletRequest.getParameter("production-year")))
+              .company(httpServletRequest.getParameter("company"))
+              .model(httpServletRequest.getParameter("model"))
+              .mileage(Integer.parseInt(httpServletRequest.getParameter("mileage")))
+              .build();
+   }
 }
