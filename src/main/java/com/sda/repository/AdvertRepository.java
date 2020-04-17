@@ -1,6 +1,7 @@
 package com.sda.repository;
 
 import com.sda.model.Advert;
+import com.sda.model.Car;
 import com.sda.model.User;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

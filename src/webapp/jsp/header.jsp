@@ -10,34 +10,35 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
    <div class="container-fluid">
       <div class="navbar-header">
-         <a class="navbar-brand" href="/home">Otomoto</a>
+         <a class="navbar-brand" href="/home">MyOtomoto</a>
       </div>
       <c:if test="${sessionScope.user!=null}">
          <ul class="nav navbar-nav">
-               <%--                <li class="active"><a href="/home">Home</a></li>--%>
+            <li class="active"><a href="/home">Home</a></li>
+            <li class="dropdown">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Adverts
+                  <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                  <li><a href="/my-ads">My Ads</a></li>
+                  <li><a href="/all-ads">All Ads</a></li>
+               </ul>
+            </li>
             <li><a href="/create-ad">Create AD</a></li>
-            <li><a href="/my-ads">My Ads</a></li>
-            <li><a href="/all-ads">All Ads</a></li>
          </ul>
-         <div class="navbar-header" style="float: right">
-            <div class="navbar-header">
-               Witaj, ${user.name}!
-            </div>
-            <div class="navbar-header">
-               <a class="navbar-brand" href="/logout">Logout</a>
-            </div>
-         </div>
+         <ul class="nav navbar-nav navbar-right">
+            <li><p class="navbar-text">Witaj, ${user.name}!</p></li>
+            <li><a href="/logout">Logout</a></li>
+         </ul>
       </c:if>
 
       <c:if test="${sessionScope.user==null}">
-         <ul class="nav navbar-nav" style="float: right">
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
          </ul>
       </c:if>
-
    </div>
 </nav>

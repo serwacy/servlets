@@ -7,7 +7,7 @@ import lombok.Value;
 @Value
 public class Car {
     private int productionYear;
-    private String company;
+    private String make;
     private String model;
     private int mileage;
 }

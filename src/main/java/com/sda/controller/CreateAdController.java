@@ -51,7 +51,7 @@ public class CreateAdController extends HttpServlet {
    private Car createCarFrom(final HttpServletRequest httpServletRequest) {
       return Car.builder()
               .productionYear(Integer.parseInt(httpServletRequest.getParameter("production-year")))
-              .company(httpServletRequest.getParameter("company"))
+              .make(httpServletRequest.getParameter("make"))
               .model(httpServletRequest.getParameter("model"))
               .mileage(Integer.parseInt(httpServletRequest.getParameter("mileage")))
               .build();
