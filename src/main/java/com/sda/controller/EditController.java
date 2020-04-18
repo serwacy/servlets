@@ -16,14 +16,15 @@ public class EditController extends HttpServlet {
 
    @Override
    protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-      final User user = (User) httpServletRequest.getSession().getAttribute("user");
+      final String login = httpServletRequest.getParameter("login");
+      final User user = userService.getUserByLogin(login);
       httpServletRequest.setAttribute("user", user);
-      httpServletRequest.getRequestDispatcher("/edit.jsp").forward(httpServletRequest,httpServletResponse);
+      httpServletRequest.getRequestDispatcher("/edit.jsp").forward(httpServletRequest, httpServletResponse);
    }
 
    @Override
    protected void doPost(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-      final User user = (User) httpServletRequest.getSession().getAttribute("user");
+      final User user = userService.getUserByLogin(httpServletRequest.getParameter("login"));
       final String newName = httpServletRequest.getParameter("name");
       final String newSurname = httpServletRequest.getParameter("surname");
       userService.updateUser(user, newName, newSurname);

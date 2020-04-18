@@ -18,9 +18,8 @@
             <td>${user.name}</td>
             <td>${user.surname}</td>
             <td>${user.login}</td>
-            <c:if test="${sessionScope.user==user}">
-               <td><a href="/panel/edit"><span class="glyphicon glyphicon-pencil"></span></a></td>
-            </c:if>
+            <td><a href="/panel/edit?login=${user.login}" data-toggle="tooltip" data-placement="top" title="Edit user">
+               <span class="glyphicon glyphicon-pencil"></span></a></td>
          </tr>
       </c:forEach>
       </tbody>
