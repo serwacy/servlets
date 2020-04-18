@@ -1,6 +1,7 @@
 package com.sda.repository;
 
 import com.sda.model.User;
+import com.sda.request.EditUserRequest;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -39,12 +40,12 @@ public class UserRepository {
       return Collections.unmodifiableList(users);
    }
 
-   public void update(final User user, final String newName, final String newSurname) {
-      if(!newName.isEmpty() && !newName.equals("Enter new name")){
-         getUserByLogin(user.getLogin()).get().setName(newName);
+   public void update(final EditUserRequest request) {
+      if(!request.getName().isEmpty() && !request.getName().equals("Enter new name")){
+         getUserByLogin(request.getLogin()).get().setName(request.getName());
       }
-      if(!newSurname.isEmpty() && !newSurname.equals("Enter new surname")){
-         getUserByLogin(user.getLogin()).get().setSurname(newSurname);
+      if(!request.getSurname().isEmpty() && !request.getSurname().equals("Enter new surname")){
+         getUserByLogin(request.getLogin()).get().setSurname(request.getSurname());
       }
    }
 }

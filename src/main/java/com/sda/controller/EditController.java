@@ -1,6 +1,7 @@
 package com.sda.controller;
 
 import com.sda.model.User;
+import com.sda.request.EditUserRequest;
 import com.sda.service.UserService;
 
 import javax.servlet.ServletException;
@@ -24,10 +25,12 @@ public class EditController extends HttpServlet {
 
    @Override
    protected void doPost(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-      final User user = userService.getUserByLogin(httpServletRequest.getParameter("login"));
+      final String login = httpServletRequest.getParameter("login");
       final String newName = httpServletRequest.getParameter("name");
       final String newSurname = httpServletRequest.getParameter("surname");
-      userService.updateUser(user, newName, newSurname);
+      final EditUserRequest request = new EditUserRequest(newName, newSurname, login);
+
+      userService.updateUser(request);
       httpServletResponse.sendRedirect("/panel/users");
    }
 }
