@@ -17,7 +17,7 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("login.jsp");
+        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("/login.jsp");
         requestDispatcher.forward(httpServletRequest, httpServletResponse);
     }
 
@@ -30,22 +30,22 @@ public class LoginController extends HttpServlet {
             case "correctInput":
                 final HttpSession session = httpServletRequest.getSession();
                 session.setAttribute("user", userService.getUserByLogin(login));
-                httpServletRequest.getRequestDispatcher("home.jsp")
+                httpServletRequest.getRequestDispatcher("/home.jsp")
                         .forward(httpServletRequest, httpServletResponse);
                 break;
             case "noSuchLogin":
                 httpServletRequest.setAttribute("noSuchLogin", login);
-                httpServletRequest.getRequestDispatcher("login.jsp")
+                httpServletRequest.getRequestDispatcher("/login.jsp")
                         .forward(httpServletRequest, httpServletResponse);
                 break;
             case "wrongPassword":
                 httpServletRequest.setAttribute("wrongPassword", password);
-                httpServletRequest.getRequestDispatcher("login.jsp")
+                httpServletRequest.getRequestDispatcher("/login.jsp")
                         .forward(httpServletRequest, httpServletResponse);
                 break;
             default:
                 httpServletRequest.setAttribute("content", "home");
-                httpServletRequest.getRequestDispatcher("home.jsp")
+                httpServletRequest.getRequestDispatcher("/home.jsp")
                         .forward(httpServletRequest, httpServletResponse);
                 break;
         }

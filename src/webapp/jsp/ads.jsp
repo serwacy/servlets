@@ -3,7 +3,7 @@
 <jsp:include page="header.jsp"/>
 
 <c:if test="${requestScope.filters=='active'}">
-   <form action="/all-ads" method="post">
+   <form action="/panel/all-ads" method="post">
       <div class="row">
          <div class="col-sm-2">
             <label for="make">Make:</label><br />

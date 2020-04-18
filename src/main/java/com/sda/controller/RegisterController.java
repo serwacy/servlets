@@ -17,7 +17,7 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("register.jsp");
+        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("/register.jsp");
         requestDispatcher.forward(httpServletRequest, httpServletResponse);
     }
 
@@ -27,11 +27,11 @@ public class RegisterController extends HttpServlet {
         final boolean created = userService.registerUser(user);
         if(created) {
             httpServletRequest.setAttribute("content", "register_successful");
-            httpServletRequest.getRequestDispatcher("home.jsp")
+            httpServletRequest.getRequestDispatcher("/home.jsp")
                     .forward(httpServletRequest, httpServletResponse);
         } else {
             httpServletRequest.setAttribute("loginExists", user.getLogin());
-            httpServletRequest.getRequestDispatcher("register.jsp")
+            httpServletRequest.getRequestDispatcher("/register.jsp")
                     .forward(httpServletRequest, httpServletResponse);
         }
     }

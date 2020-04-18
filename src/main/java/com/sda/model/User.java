@@ -1,10 +1,10 @@
 package com.sda.model;
 
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
 
 @Builder
-@Value
+@Data
 public class User {
     private String name;
     private String surname;

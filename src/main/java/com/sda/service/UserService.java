@@ -5,6 +5,7 @@ import com.sda.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -38,5 +39,13 @@ public class UserService {
 
     public User getUserByLogin (final String login) {
         return userRepository.getUserByLogin(login).get();
+    }
+
+    public List<User> getAll() {
+        return userRepository.getAll();
+    }
+
+    public void updateUser(final User user, final String newName, final String newSurname){
+        userRepository.update(user, newName, newSurname);
     }
 }

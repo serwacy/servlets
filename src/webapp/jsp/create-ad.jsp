@@ -11,7 +11,7 @@
                Something went wrong. Please try again.
             </div>
          </c:if>
-         <form action="/create-ad" method="post">
+         <form action="/panel/create-ad" method="post">
             <div class="form-group">
                <label for="production-year">Year of production:</label>
                <input type="number" id="production-year" class="form-control" name="production-year"

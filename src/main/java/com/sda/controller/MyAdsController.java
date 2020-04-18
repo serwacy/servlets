@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "MyAdsController", value = "/my-ads")
+@WebServlet(name = "MyAdsController", value = "/panel/my-ads")
 public class MyAdsController extends HttpServlet {
     private AdvertService advertService = AdvertService.aAdvertService();
 
@@ -26,7 +26,7 @@ public class MyAdsController extends HttpServlet {
         }
         httpServletRequest.setAttribute("adverts", adverts);
         httpServletRequest.setAttribute("filters", "inactive");
-        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("ads.jsp");
+        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("/ads.jsp");
         requestDispatcher.forward(httpServletRequest, httpServletResponse);
     }
 }

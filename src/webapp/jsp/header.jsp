@@ -22,15 +22,16 @@
                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Adverts
                   <span class="caret"></span></a>
                <ul class="dropdown-menu">
-                  <li><a href="/my-ads">My Ads</a></li>
-                  <li><a href="/all-ads">All Ads</a></li>
+                  <li><a href="/panel/my-ads">My Ads</a></li>
+                  <li><a href="/panel/all-ads">All Ads</a></li>
                </ul>
             </li>
-            <li><a href="/create-ad">Create AD</a></li>
+            <li><a href="/panel/create-ad">Create AD</a></li>
+            <li><a href="/panel/users">Users</a></li>
          </ul>
          <ul class="nav navbar-nav navbar-right">
             <li><p class="navbar-text">Witaj, ${user.name}!</p></li>
-            <li><a href="/logout">Logout</a></li>
+            <li><a href="/panel/logout">Logout</a></li>
          </ul>
       </c:if>
 

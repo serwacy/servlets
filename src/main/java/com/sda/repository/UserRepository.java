@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,4 +35,16 @@ public class UserRepository {
       return users.stream().filter(user -> user.getLogin().equals(login)).findFirst();
    }
 
+   public List<User> getAll() {
+      return Collections.unmodifiableList(users);
+   }
+
+   public void update(final User user, final String newName, final String newSurname) {
+      if(!newName.isEmpty() && !newName.equals("Enter new name")){
+         getUserByLogin(user.getLogin()).get().setName(newName);
+      }
+      if(!newSurname.isEmpty() && !newSurname.equals("Enter new surname")){
+         getUserByLogin(user.getLogin()).get().setSurname(newSurname);
+      }
+   }
 }

@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "AllAdsController", value = "/all-ads")
+@WebServlet(name = "AllAdsController", value = "/panel/all-ads")
 public class AllAdsController extends HttpServlet {
     private AdvertService advertService = AdvertService.aAdvertService();
 
@@ -23,7 +23,7 @@ public class AllAdsController extends HttpServlet {
         isAdvertListEmpty(adverts, httpServletRequest);
         httpServletRequest.setAttribute("adverts", adverts);
         httpServletRequest.setAttribute("filters", "active");
-        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("ads.jsp");
+        final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("/ads.jsp");
         requestDispatcher.forward(httpServletRequest, httpServletResponse);
     }
 
@@ -75,7 +75,7 @@ public class AllAdsController extends HttpServlet {
         isAdvertListEmpty(adverts, httpServletRequest);
         httpServletRequest.setAttribute("adverts", adverts);
         httpServletRequest.setAttribute("filters", "active");
-        httpServletRequest.getRequestDispatcher("ads.jsp")
+        httpServletRequest.getRequestDispatcher("/ads.jsp")
                 .forward(httpServletRequest, httpServletResponse);
     }
 

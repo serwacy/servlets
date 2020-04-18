@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-@WebServlet(name = "CreateAdController", value = "/create-ad")
+@WebServlet(name = "CreateAdController", value = "/panel/create-ad")
 public class CreateAdController extends HttpServlet {
    private AdvertService advertService = AdvertService.aAdvertService();
 
    @Override
    protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
-      final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("create-ad.jsp");
+      final RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("/create-ad.jsp");
       requestDispatcher.forward(httpServletRequest, httpServletResponse);
    }
 
@@ -29,11 +29,11 @@ public class CreateAdController extends HttpServlet {
       final Advert advert = createAdvertFrom(httpServletRequest);
       if (advertService.addAdvert(advert)) {
          httpServletRequest.setAttribute("content", "advert_added");
-         httpServletRequest.getRequestDispatcher("home.jsp")
+         httpServletRequest.getRequestDispatcher("/home.jsp")
                  .forward(httpServletRequest, httpServletResponse);
       } else {
          httpServletRequest.setAttribute("content", "error");
-         httpServletRequest.getRequestDispatcher("create-ad.jsp")
+         httpServletRequest.getRequestDispatcher("/create-ad.jsp")
                  .forward(httpServletRequest, httpServletResponse);
       }
    }
