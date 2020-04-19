@@ -3,6 +3,8 @@ package com.sda.model;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Builder
 @Data
 public class User {
@@ -10,4 +12,5 @@ public class User {
     private String surname;
     private String login;
     private String password;
+    private List<Advert> observedAds;
 }

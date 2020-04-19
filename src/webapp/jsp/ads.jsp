@@ -58,7 +58,14 @@
       <c:forEach items="${requestScope.adverts}" var="advert">
          <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-               <h3>${advert.car.make} ${advert.car.model}</h3>
+               <h3>${advert.car.make} ${advert.car.model}
+                  <c:if test="${sessionScope.user.observedAds.contains(advert)}">
+                     <a href="/panel/adding?observed=yes"><span class="glyphicon glyphicon-star"></span></a>
+                  </c:if>
+                  <c:if test="${!sessionScope.user.observedAds.contains(advert)}">
+                     <a href="/panel/adding?observed=no"><span class="glyphicon glyphicon-star-empty"></span></a>
+                  </c:if>
+               </h3>
                <p>
                   Mileage: ${advert.car.mileage}
                </p>

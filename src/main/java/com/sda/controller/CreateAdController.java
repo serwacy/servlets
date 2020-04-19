@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 @WebServlet(name = "CreateAdController", value = "/panel/create-ad")
 public class CreateAdController extends HttpServlet {
@@ -39,12 +42,14 @@ public class CreateAdController extends HttpServlet {
    }
 
    private Advert createAdvertFrom(final HttpServletRequest httpServletRequest) {
+      final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
       return Advert.builder()
               .price(Integer.parseInt(httpServletRequest.getParameter("price")))
               .currency(httpServletRequest.getParameter("currency"))
               .car(createCarFrom(httpServletRequest))
               .user((User) httpServletRequest.getSession().getAttribute("user"))
-              .createdAt(LocalDateTime.now())
+              .createdAt(LocalDateTime.now().format(formatter))
+              .observedBy(new ArrayList<>())
               .build();
    }
 

@@ -35,4 +35,10 @@ public class AdvertRepository {
                 .filter(advert -> advert.getUser().equals(user))
                 .collect(Collectors.toList());
     }
+
+    public List<Advert> getAdvertsObservedBy(final User user) {
+        return adverts.stream()
+                .filter(advert -> advert.getObservedBy().contains(user))
+                .collect(Collectors.toList());
+    }
 }
