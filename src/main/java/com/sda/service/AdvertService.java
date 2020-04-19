@@ -31,7 +31,7 @@ public class AdvertService {
     public List<Advert> getAdvertsByUser(final User user) {
         return advertRepository.getAdvertsByUser(user);
     }
-    public List<Advert> getObservedAdvertsByUser(final User user) {
-        return advertRepository.getAdvertsObservedBy(user);
+    public Advert getAdvertById(final String id){
+        return advertRepository.getAdvertById(id);
     }
 }

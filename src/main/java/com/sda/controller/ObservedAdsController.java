@@ -2,8 +2,6 @@ package com.sda.controller;
 
 import com.sda.model.Advert;
 import com.sda.model.User;
-import com.sda.service.AdvertService;
-import com.sda.service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,12 +14,11 @@ import java.util.List;
 
 @WebServlet(name = "ObservedAdsController", value = "/panel/observed-ads")
 public class ObservedAdsController extends HttpServlet {
-   private AdvertService advertService = AdvertService.aAdvertService();
 
    @Override
    protected void doGet(final HttpServletRequest httpServletRequest, final HttpServletResponse httpServletResponse) throws ServletException, IOException {
       final User user = (User) httpServletRequest.getSession().getAttribute("user");
-      final List<Advert> adverts = advertService.getObservedAdvertsByUser(user);
+      final List<Advert> adverts = user.getObservedAds();
       if(adverts.isEmpty()){
          httpServletRequest.setAttribute("isEmpty", "empty");
       }
