@@ -1,7 +1,9 @@
 package com.sda.service;
 
+import com.sda.model.Advert;
 import com.sda.model.User;
 import com.sda.repository.UserRepository;
+import com.sda.request.EditUserRequest;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
@@ -45,7 +47,16 @@ public class UserService {
         return userRepository.getAll();
     }
 
-    public void updateUser(final User user, final String newName, final String newSurname){
-        userRepository.update(user, newName, newSurname);
+    public void updateUser(final EditUserRequest request){
+        userRepository.update(request);
+    }
+
+    public void handleObservedAds(final User user, final Advert advert, final String observed) {
+        if(observed.equals("yes")){
+            user.getObservedAds().remove(advert);
+        }
+        if (observed.equals("no")){
+            user.getObservedAds().add(advert);
+        }
     }
 }

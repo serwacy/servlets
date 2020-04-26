@@ -31,4 +31,7 @@ public class AdvertService {
     public List<Advert> getAdvertsByUser(final User user) {
         return advertRepository.getAdvertsByUser(user);
     }
+    public Advert getAdvertById(final String id){
+        return advertRepository.getAdvertById(id);
+    }
 }

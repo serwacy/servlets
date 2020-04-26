@@ -1,7 +1,6 @@
 package com.sda.repository;
 
 import com.sda.model.Advert;
-import com.sda.model.Car;
 import com.sda.model.User;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -32,7 +31,12 @@ public class AdvertRepository {
 
     public List<Advert> getAdvertsByUser(final User user) {
         return adverts.stream()
-                .filter(advert -> advert.getUser().equals(user))
+                .filter(advert -> advert.getUserLogin().equals(user.getLogin()))
                 .collect(Collectors.toList());
+    }
+    public Advert getAdvertById(final String id){
+        return adverts.stream()
+                .filter(advert -> advert.getId().equals(id))
+                .findAny().get();
     }
 }

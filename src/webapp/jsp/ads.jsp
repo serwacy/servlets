@@ -1,3 +1,4 @@
+<%@ page import="com.sda.model.User" %>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="header.jsp"/>
@@ -58,7 +59,17 @@
       <c:forEach items="${requestScope.adverts}" var="advert">
          <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-               <h3>${advert.car.make} ${advert.car.model}</h3>
+               <h3>${advert.car.make} ${advert.car.model}
+<%--                  <c:set var="advert" scope="session" value="${advert}"/>--%>
+                  <c:if test="${sessionScope.user.observedAds.contains(advert)}">
+                     <a href="/panel/adding?observed=yes&id=${advert.id}" data-toggle="tooltip" data-placement="right" title="Remove from observed">
+                        <span class="glyphicon glyphicon-star"></span></a>
+                  </c:if>
+                  <c:if test="${!sessionScope.user.observedAds.contains(advert)}">
+                     <a href="/panel/adding?observed=no&id=${advert.id}" data-toggle="tooltip" data-placement="right" title="Add to observed">
+                        <span class="glyphicon glyphicon-star-empty"></span></a>
+                  </c:if>
+               </h3>
                <p>
                   Mileage: ${advert.car.mileage}
                </p>
@@ -67,7 +78,7 @@
                </p>
                <p>
                   <a href="#" class="btn btn-primary">${advert.price} ${advert.currency}</a><br/>
-                  <br/><span>Posted by: ${advert.user.name} ${advert.user.surname}</span>
+                  <br/><span>Posted by: ${advert.userLogin}</span>
                   <br/><span>Created at: ${advert.createdAt}</span>
                </p>
             </div>
@@ -75,6 +86,12 @@
       </c:forEach>
    </div>
 </div>
+
+<script>
+   $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+   });
+</script>
 
 </body>
 </html>

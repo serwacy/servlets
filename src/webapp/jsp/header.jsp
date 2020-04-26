@@ -23,6 +23,7 @@
                   <span class="caret"></span></a>
                <ul class="dropdown-menu">
                   <li><a href="/panel/my-ads">My Ads</a></li>
+                  <li><a href="/panel/observed-ads">Observed Ads</a></li>
                   <li><a href="/panel/all-ads">All Ads</a></li>
                </ul>
             </li>

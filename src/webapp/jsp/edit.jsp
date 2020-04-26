@@ -14,8 +14,8 @@
          </thead>
          <tbody>
          <tr>
-            <td>${sessionScope.user.name}</td>
-            <td>${sessionScope.user.surname}</td>
+            <td>${requestScope.user.name}</td>
+            <td>${requestScope.user.surname}</td>
          </tr>
          <tr>
             <td>
@@ -33,6 +33,7 @@
          <button type="submit" class="btn btn-primary">Submit</button>
          <a href="/panel/users" class="btn btn-danger" role="button">Cancel</a>
       </div>
+      <input type="hidden" id="login" name="login" value="${requestScope.user.login}">
    </form>
 </div>
 

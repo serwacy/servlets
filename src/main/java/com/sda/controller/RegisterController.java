@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "RegisterController", value = "/register")
 public class RegisterController extends HttpServlet {
@@ -42,6 +43,7 @@ public class RegisterController extends HttpServlet {
                 .name(httpServletRequest.getParameter("name"))
                 .surname(httpServletRequest.getParameter("surname"))
                 .password(httpServletRequest.getParameter("password"))
+                .observedAds(new ArrayList<>())
                 .build();
     }
 }
